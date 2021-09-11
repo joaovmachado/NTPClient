@@ -111,4 +111,14 @@ class NTPClient {
      * Stops the underlying UDP client
      */
     void end();
+
+    /**
+     * Set currentEpoc
+     */
+    void setCurrentEpoc(unsigned long currentEpoc);
+
+    /*
+     * Set _lastUpdate to 0, resetting millis counter
+     */
+    void resetLastUpdate();
 };

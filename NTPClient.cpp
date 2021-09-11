@@ -133,7 +133,7 @@ bool NTPClient::isTimeSet() const {
 unsigned long NTPClient::getEpochTime() const {
   return this->_timeOffset + // User offset
          this->_currentEpoc + // Epoch returned by the NTP server
-         ((millis() - this->_lastUpdate) / 1000); // Time since last update
+         ((millis() - this->_lastUpdate) / 1000); // Seconds since last update
 }
 
 int NTPClient::getDay() const {
@@ -210,3 +210,14 @@ void NTPClient::setRandomPort(unsigned int minValue, unsigned int maxValue) {
   randomSeed(analogRead(0));
   this->_port = random(minValue, maxValue);
 }
+
+void NTPClient::setCurrentEpoc(unsigned long currentEpoc)
+{
+  this->_currentEpoc = currentEpoc;
+}
+
+void NTPClient::resetLastUpdate()
+{
+  this->_lastUpdate = 0;
+}
+
